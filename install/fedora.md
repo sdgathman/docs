@@ -38,17 +38,21 @@ for some reason - a sender simply doesn't route through that node anymore.  (But
 Installing CJDNS on Fedora and EPEL
 ===================================
 
-Since Fedora 23, cjdns is in the Fedora repository.  It is in the testing repository until it gains sufficient positive karma.  To install:
+Since Fedora 23, cjdns is in the Fedora repository:
 
 ```bash
-sudo dnf install cjdns cjdns-tools cjdns-selinux --enablerepo=updates-testing
+sudo dnf install cjdns cjdns-tools cjdns-selinux
 ```
 
 The cjdns-tools package has peerStats and other nodejs tools.  Python versions of the tools are in cjdns-python - although the ones conflicting with the nodejs tools are not symlinked to /bin.
 
 The cjdns-selinux package has an selinux sandbox for cjdroute, to prevent it from doing anything wonky through accident or malice.  Some don't trust selinux (because of NSA origins), but it is installed by default on Fedora - so if you are running Fedora you want this.
 
-For rhel6 and rhel7 with the EPEL repo, use the epel-testing repo instead of updates-testing.
+For rhel6 and rhel7 with the EPEL repo, use the epel-testing repo until it reaches stable:
+
+```bash
+# yum install cjdns cjdns-tools cjdns-selinux --enablerepo=epel-testing
+```
 
 Start cjdroute:
 
